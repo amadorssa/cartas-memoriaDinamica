@@ -1,38 +1,29 @@
-//#include "barajaAuxiliar01.h"
 #include "barajaAuxiliar02.h"
 
 using namespace std;
 
 int main() {
     Carta* baraja = generarBaraja(); // Genera la baraja
-    if (baraja == nullptr) {
+    if (baraja == nullptr) { // Revisar si la baraja se genero exitosamente
         cout << "No se pudo generar la baraja" << endl;
     }
     
-    cout << "K";
+    cout << endl << "***   BARAJA   ***" << endl;
     imprimirBaraja(baraja); // Imprime la baraja
-    cout << "G";
 
-    
     Carta* partida[6][5];
     repartirBaraja(baraja, partida); // Reparte las cartas a los jugadores
-    cout << "H";
 
-
+    cout << endl << "***   PARTIDA ACTUAL   ***" << endl;
     imprimirPartida(partida); // Imprime las manos de los jugadores
 
-    cout << "A";
     int ganador;
     Carta* cartaGanadora = nullptr;
-    cout << "B";
     obtenerGanador(partida, ganador, cartaGanadora); // Determina al ganador
 
-    cout << "C";
-    cout << "El ganador es el jugador " << (ganador + 1) << " con la carta: Figura: " << cartaGanadora->figura << ", Valor: " << cartaGanadora->valor << endl;
+    cout << endl << "El ganador es el jugador " << (ganador + 1) << " con la carta: (" << cartaGanadora->figura << "," << cartaGanadora->valor << ")" << endl;
 
-    cout << "D";
     almacenarPartida(partida, ganador, cartaGanadora); // Almacena la partida en un archivo
-    cout << "E";
 
     // Liberar la memoria
     for (int i = 0; i < 6; ++i) {
